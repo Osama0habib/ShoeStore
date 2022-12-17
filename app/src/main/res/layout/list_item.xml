@@ -10,64 +10,86 @@
             type="com.udacity.shoestore.models.Shoe" />
     </data>
 
-    <LinearLayout
+    <!--    using ConstraintLayout to avoid nesting more than linearLayout and to be more flexable -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearItem"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
         android:padding="24dp">
 
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageButton"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/imageSize"
+            android:layout_height="@dimen/imageSize"
             android:layout_gravity="center_vertical"
             android:adjustViewBounds="false"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
             app:strokeColor="@color/colorPrimary"
-            app:strokeWidth="1dp"
+            app:strokeWidth="@dimen/smallPadding"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="fill_vertical"
-            android:layout_weight="3"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:padding="16dp">
 
-            <TextView
-                android:id="@+id/nameText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name"
-                android:text="@{shoe.name}" />
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="@dimen/matchConstraint"
+            android:layout_height="@dimen/matchConstraint"
+            android:layout_marginStart="@dimen/smallPadding"
+            android:hint="Name"
 
-            <TextView
-                android:id="@+id/companyText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Company"
-                android:text="@{shoe.company}" />
+            android:text="@{shoe.name}"
+            app:layout_constraintBottom_toTopOf="@+id/companyText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton"
+            app:layout_constraintTop_toTopOf="@+id/imageButton" />
 
-            <TextView
-                android:id="@+id/sizeText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Size"
-                android:text="@{DoubleConverter.doubleToString(shoe.size)}" />
 
-            <TextView
-                android:id="@+id/descriptionText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Description"
-                android:text="@{shoe.description}" />
-        </LinearLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/companyText"
+            android:layout_width="@dimen/matchConstraint"
+            android:layout_height="@dimen/matchConstraint"
+            android:layout_marginStart="@dimen/smallPadding"
+            android:hint="Company"
+
+            android:text="@{shoe.company}"
+            app:layout_constraintBottom_toTopOf="@+id/sizeText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/nameText" />
+
+        <TextView
+            android:id="@+id/sizeText"
+            android:layout_width="@dimen/matchConstraint"
+            android:layout_height="@dimen/matchConstraint"
+            android:layout_marginStart="@dimen/smallPadding"
+
+            android:hint="Size"
+            android:text="@{DoubleConverter.doubleToString(shoe.size)}"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/companyText" />
+
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="@dimen/matchConstraint"
+            android:layout_height="@dimen/matchConstraint"
+
+            android:layout_marginStart="@dimen/smallPadding"
+            android:hint="Description"
+            android:text="@{shoe.description}"
+
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/sizeText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

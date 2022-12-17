@@ -8,9 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.navigateUp
 import com.udacity.shoestore.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.view.*
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
          val navController = this.findNavController(R.id.navigation_fragment)
-
         return navController.navigateUp( )
     }
 }

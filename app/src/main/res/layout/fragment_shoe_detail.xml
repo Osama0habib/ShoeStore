@@ -12,12 +12,13 @@
             name="shoe"
             type="com.udacity.shoestore.models.Shoe" />
     </data>
+    <!--    using ConstraintLayout to avoid nesting more than linearLayout and to be more flexable -->
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+
+        >
 
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -25,83 +26,126 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="@dimen/padding"
             android:clickable="true"
-            android:padding="24dp"
+            android:padding="@dimen/padding"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher_round"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
             app:strokeColor="@color/colorPrimary"
-            app:strokeWidth="1dp"
-            tools:src="@tools:sample/avatars" />
+            app:strokeWidth="@dimen/strokeWidth"
+            tools:src="@tools:sample/avatars" /><![CDATA[
+
+
+
+
+
+
+
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+
+
+
+
+
+
+
+        ]]>
 
         <EditText
             android:id="@+id/ShoeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="@dimen/smallPadding"
+            android:layout_marginTop="@dimen/padding"
+            android:layout_marginEnd="@dimen/smallPadding"
             android:ems="10"
             android:hint="Name"
             android:inputType="textPersonName"
-            android:text="@={shoe.name}" />
+            android:text="@={shoe.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <EditText
             android:id="@+id/ShoeCompany"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="@dimen/smallPadding"
+            android:layout_marginTop="@dimen/smallPadding"
+            android:layout_marginEnd="@dimen/smallPadding"
             android:ems="10"
             android:hint="Company"
             android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:text="@={shoe.company}" />
+            android:minHeight="@dimen/minHight"
+            android:text="@={shoe.company}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ShoeName" />
 
         <EditText
             android:id="@+id/ShoeSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="@dimen/smallPadding"
+            android:layout_marginTop="@dimen/smallPadding"
+            android:layout_marginEnd="@dimen/smallPadding"
             android:ems="10"
             android:hint="Size"
             android:inputType="numberDecimal"
-            android:minHeight="48dp"
-            android:text="@={DoubleConverter.doubleToString(shoe.size)}" />
+            android:minHeight="@dimen/minHight"
+            android:text="@={DoubleConverter.doubleToString(shoe.size)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ShoeDescription" />
 
         <EditText
             android:id="@+id/ShoeDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="@dimen/smallPadding"
+            android:layout_marginTop="@dimen/smallPadding"
+            android:layout_marginEnd="@dimen/smallPadding"
             android:ems="10"
             android:hint="Description"
             android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:text="@={shoe.description}" />
+            android:minHeight="@dimen/minHight"
+            android:text="@={shoe.description}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ShoeCompany" />
 
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding"
+            android:layout_weight="1"
+            android:text="cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/SaveButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ShoeSize" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/cancelButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="24dp"
-                android:layout_weight="1"
-                android:text="cancel" />
-
-            <Button
-                android:id="@+id/SaveButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="24dp"
-                android:layout_weight="1"
-                android:text="save" />
-        </LinearLayout>
-    </LinearLayout>
+        <Button
+            android:id="@+id/SaveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding"
+            android:layout_weight="1"
+            android:text="save"
+            app:layout_constraintBaseline_toBaselineOf="@+id/cancelButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cancelButton" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding">24dp</dimen>
+    <dimen name="minHight">48dp</dimen>
+    <dimen name="strokeWidth">1dp</dimen>
+    <dimen name="imageSize">80dp</dimen>
+    <dimen name="matchConstraint">0dp</dimen>
+    <dimen name="smallPadding">16dp</dimen>
+</resources>
